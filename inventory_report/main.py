@@ -1,4 +1,4 @@
-from reports.simple_report import SimpleReport
+from reports.complete_report import CompleteReport
 
 
 stock = [
@@ -43,7 +43,7 @@ stock = [
 
 def main():
     # Iniciando o Projeto #VQV
-    SimpleReport.generate(stock)
+    CompleteReport.generate(stock)
     pass
 
 
