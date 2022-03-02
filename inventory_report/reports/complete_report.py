@@ -1,3 +1,4 @@
+import collections
 from .simple_report import SimpleReport
 
 
@@ -9,14 +10,10 @@ class CompleteReport(SimpleReport):
         company_list = [
             item['nome_da_empresa'] for item in data
         ]
-        unique_company_list = list(set(company_list))
-        unique_company_list = sorted(
-            unique_company_list,
-            key=lambda company: company[3]
-        )
+        company_counter = collections.Counter(company_list)
         str = 'Produtos estocados por empresa: \n'
-        for company in unique_company_list:
-            str = f'{str}- {company}: 'f'{company_list.count(company)}\n'
+        for company in company_counter:
+            str = f'{str}- {company}: 'f'{company_counter[company]}\n'
         return (
             f'{SimpleReport.generate(data)}\n'
             f'{str}'
